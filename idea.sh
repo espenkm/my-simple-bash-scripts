@@ -38,8 +38,17 @@ else
 
     # can't do anything smart; just open IDEA
     else
-#      echo 'cbf'
-      open "$IDEA"
+        cp ~/priv/src/scripts/idea.gradle .idea.gradle
+        gradle idea -q -b .idea.gradle
+        rm .idea.gradle
+        open -a "$IDEA" .
+
+	#Clean up, remove generated files
+	rm -rf .gradle
+	if [ -f .gitignore ]; then
+		echo "*.ipr" >> .gitignore
+		echo "*.iws" >> .gitignore
+	fi
     fi
 
     popd > /dev/null
