@@ -38,7 +38,8 @@ else
 
     # can't do anything smart; just open IDEA
     else
-        cp ~/priv/src/scripts/idea.gradle .idea.gradle
+        DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+        cp $DIR/idea.gradle .idea.gradle
         gradle idea -q -b .idea.gradle
         rm .idea.gradle
         open -a "$IDEA" .
