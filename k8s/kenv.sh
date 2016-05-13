@@ -6,6 +6,8 @@ fi
 
 if [ "$#" -eq 0 ]; then
     kubectl config view -o jsonpath='{.current-context}'
-    echo
 fi
+
+echo
+kubectl  cluster-info
 

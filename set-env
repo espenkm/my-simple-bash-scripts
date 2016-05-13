@@ -1,2 +1,12 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 for d in $DIR; do PATH="$PATH:$d"; done
+
+alias g=./gradlew
+alias gradlew=./gradlew
+
+alias idea=${BASH_SOURCE[0]}/idea.sh
+
+alias k=kubectl
+alias ks='k --namespace=kube-system'
+
+alias dkill="docker ps -q | xargs docker kill"
