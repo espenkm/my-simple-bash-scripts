@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-kubectl get pods --all-namespaces | grep $1 | grep -v Terminating | head -1 | awk -F ' ' '{print $2}' | xargs kubectl logs -f
+namespace=$(kubectl get pods --all-namespaces | grep -v Terminating | grep $1 | awk -F ' ' '{print $1}'|  head -1)
+kubectl get pods --all-namespaces | grep $1 | grep -v Terminating | head -1 | awk -F ' ' '{print $2}' | xargs kubectl logs --namespace=$namespace -f
